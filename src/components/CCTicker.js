@@ -8,6 +8,11 @@ import "../styles/cc_ticker.css";
 class CCTicker extends Component {
   componentWillMount() {
     this.props.fetchCryptos();
+    this.interval = setInterval(this.fetchCryptos, 10 * 6000 * 30); // 30 minutes
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

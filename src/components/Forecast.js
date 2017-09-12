@@ -9,6 +9,11 @@ import "../styles/forecast.css";
 class Forecast extends Component {
   componentWillMount() {
     this.props.fetchForecast();
+    this.interval = setInterval(this.fetchForecast, 10 * 6000 * 60 * 6); // 6 hrs
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

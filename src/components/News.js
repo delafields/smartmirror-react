@@ -19,6 +19,22 @@ class News extends Component {
     this.props.fetchBloomNews();
     this.props.fetchEconNews();
     this.props.fetchHackerNews();
+
+    const twoHrs = 10 * 6000 * 60 * 2;
+
+    this.bbcInterval = setInterval(this.fetchBBCNews, twoHrs);
+    this.scientistInterval = setInterval(this.fetchScientistNews, twoHrs);
+    this.bloomInterval = setInterval(this.fetchBloomNews, twoHrs);
+    this.econInterval = setInterval(this.fetchEconNews, twoHrs);
+    this.hackerInterval = setInterval(this.fetchHackerNews, twoHrs);
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.bbcInterval);
+    clearInterval(this.scientistInterval);
+    clearInterval(this.bloomInterval);
+    clearInterval(this.econInterval);
+    clearInterval(this.hackerInterval);
   }
 
   render() {

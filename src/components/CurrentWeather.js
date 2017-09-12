@@ -8,6 +8,11 @@ import "../styles/current_weather.css";
 class CurrentWeather extends Component {
   componentWillMount() {
     this.props.fetchWeather();
+    this.interval = setInterval(this.fetchWeather, 10 * 6000 * 60 * 1); // 1 hr
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {

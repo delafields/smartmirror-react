@@ -8,6 +8,11 @@ import "../styles/calendar.css";
 class Calendar extends Component {
   componentWillMount() {
     this.props.fetchCalendar();
+    this.interval = setInterval(this.fetchCalendar, 10 * 6000 * 60 * 2); // 2 hrs
+  }
+
+  componentWillUnmount() {
+    clearInterval(this.interval);
   }
 
   render() {
