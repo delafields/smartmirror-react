@@ -1,0 +1,25 @@
+#weatherWrapper {
+  margin-bottom: 20px;
+  text-align: center;
+  font-weight: 300;
+}
+#humid {
+  font-size: 1.5em;
+}
+#temp {
+  font-size: 1.5em;
+  margin-right: 10px;
+  margin-left: 10px;
+}
+#windSpeed {
+  font-size: 1.5em;
+  padding-right: 10px;
+  padding-left: 10px;
+}
+.wi-wind {
+  font-size: 1.75em;
+}
+i {
+  font-size: 1.5em;
+  margin-right: 10px;
+}

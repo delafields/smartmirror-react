@@ -1,13 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import registerServiceWorker from './registerServiceWorker';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
-import registerServiceWorker from './registerServiceWorker';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
 
 import App from './App';
 import reducers from './reducers';
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+let middleware = [thunk, logger];
+const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

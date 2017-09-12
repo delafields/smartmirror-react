@@ -1,0 +1,17 @@
+.forecastTitle {
+  font-size: 0.75em;
+  text-transform: uppercase;
+  text-align: left;
+}
+.forecastDescription {
+  text-transform: uppercase;
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #b4cdf7;
+  text-align: center;
+}
+.forecastTemp {
+  padding-left: 10px;
+  font-weight: 300;
+  font-size: 1.25em;
+}

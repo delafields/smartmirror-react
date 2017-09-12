@@ -1,0 +1,19 @@
+.calDate {
+  font-size: 0.8em;
+}
+.calEvent {
+  font-weight: 300;
+  font-size: 0.9em;
+}
+#event2 {
+  opacity: 0.95;
+}
+#event3 {
+  opacity: 0.9;
+}
+#event4 {
+  opacity: 0.85;
+}
+#event5 {
+  opacity: 0.8;
+}

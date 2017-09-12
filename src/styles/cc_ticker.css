@@ -1,0 +1,72 @@
+@-webkit-keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+@keyframes ticker {
+  0% {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+  }
+
+  100% {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.ticker-wrap {
+  width: 100%;
+  overflow: hidden;
+  height: 4rem;
+  padding-left: 100%; /* offset items to begin */
+}
+
+.ticker {
+  display: inline-block;
+  height: 4rem;
+  line-height: 4rem;
+  white-space: nowrap; /* display items in a line */
+  padding-right: 100%; /* ensure items go before animations repeat (taken from parent due to inline-block) */
+
+  -webkit-animation-iteration-count: infinite;
+  animation-iteration-count: infinite;
+  -webkit-animation-timing-function: linear;
+  animation-timing-function: linear;
+  -webkit-animation-name: ticker;
+  animation-name: ticker;
+  -webkit-animation-duration: 30s;
+  animation-duration: 30s;
+}
+
+.ticker__item {
+  display: inline-block;
+  font-weight: 300;
+  padding: 0 2rem;
+  color: white;
+}
+
+.tickerName {
+  font-size: 1.25em;
+  padding-right: 5px;
+}
+.tickerPrice {
+  font-size: 1.1em;
+  padding-right: 5px;
+}
+.tickerHigh {
+  color: green;
+  padding-right: 5px;
+}
+.tickerLow {
+  color: red;
+}
