@@ -126,15 +126,11 @@ export const fetchBBCNews = () => {
 				`https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${NEWS_KEY}`
 			)
 			.then(res => {
-				const bbcArticles = {
-					bbcT1: res.data.articles[0].title,
-					bbcD1: res.data.articles[0].description,
-					bbcT2: res.data.articles[1].title,
-					bbcD2: res.data.articles[1].description,
-					bbcT3: res.data.articles[2].title,
-					bbcD3: res.data.articles[2].description
-				};
-				dispatch({ type: FETCH_BBC_NEWS, payload: bbcArticles });
+				const sliceRes = res.data.articles.slice(0, 3);
+				const formatJSON = _.map(sliceRes, article => {
+					return _.pick(article, ['author', 'title', 'description']);
+				});
+				dispatch({ type: FETCH_BBC_NEWS, payload: formatJSON });
 			});
 	};
 };
@@ -145,15 +141,11 @@ export const fetchBloomNews = () => {
 				`https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=${NEWS_KEY}`
 			)
 			.then(res => {
-				const bloomArticles = {
-					bloomT1: res.data.articles[0].title,
-					bloomD1: res.data.articles[0].description,
-					bloomT2: res.data.articles[1].title,
-					bloomD2: res.data.articles[1].description,
-					bloomT3: res.data.articles[2].title,
-					bloomD3: res.data.articles[2].description
-				};
-				dispatch({ type: FETCH_BLOOM_NEWS, payload: bloomArticles });
+				const sliceRes = res.data.articles.slice(0, 3);
+				const formatJSON = _.map(sliceRes, article => {
+					return _.pick(article, ['author', 'title', 'description']);
+				});
+				dispatch({ type: FETCH_BLOOM_NEWS, payload: formatJSON });
 			});
 	};
 };
@@ -164,15 +156,11 @@ export const fetchEconNews = () => {
 				`https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=${NEWS_KEY}`
 			)
 			.then(res => {
-				const econArticles = {
-					econT1: res.data.articles[0].title,
-					econD1: res.data.articles[0].description,
-					econT2: res.data.articles[1].title,
-					econD2: res.data.articles[1].description,
-					econT3: res.data.articles[2].title,
-					econD3: res.data.articles[2].description
-				};
-				dispatch({ type: FETCH_ECON_NEWS, payload: econArticles });
+				const sliceRes = res.data.articles.slice(0, 3);
+				const formatJSON = _.map(sliceRes, article => {
+					return _.pick(article, ['author', 'title', 'description']);
+				});
+				dispatch({ type: FETCH_ECON_NEWS, payload: formatJSON });
 			});
 	};
 };
@@ -183,15 +171,11 @@ export const fetchHackerNews = () => {
 				`https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=${NEWS_KEY}`
 			)
 			.then(res => {
-				const hackArticles = {
-					hackT1: res.data.articles[0].title,
-					hackD1: res.data.articles[0].description,
-					hackT2: res.data.articles[1].title,
-					hackD2: res.data.articles[1].description,
-					hackT3: res.data.articles[2].title,
-					hackD3: res.data.articles[2].description
-				};
-				dispatch({ type: FETCH_HACKER_NEWS, payload: hackArticles });
+				const sliceRes = res.data.articles.slice(0, 3);
+				const formatJSON = _.map(sliceRes, article => {
+					return _.pick(article, ['author', 'title', 'description']);
+				});
+				dispatch({ type: FETCH_HACKER_NEWS, payload: formatJSON });
 			});
 	};
 };
@@ -202,15 +186,11 @@ export const fetchScientistNews = () => {
 				`https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${NEWS_KEY}`
 			)
 			.then(res => {
-				const sciArticles = {
-					sciT1: res.data.articles[0].title,
-					sciD1: res.data.articles[0].description,
-					sciT2: res.data.articles[1].title,
-					sciD2: res.data.articles[1].description,
-					sciT3: res.data.articles[2].title,
-					sciD3: res.data.articles[2].description
-				};
-				dispatch({ type: FETCH_SCIENTIST_NEWS, payload: sciArticles });
+				const sliceRes = res.data.articles.slice(0, 3);
+				const formatJSON = _.map(sliceRes, article => {
+					return _.pick(article, ['author', 'title', 'description']);
+				});
+				dispatch({ type: FETCH_SCIENTIST_NEWS, payload: formatJSON });
 			});
 	};
 };

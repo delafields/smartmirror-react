@@ -1,16 +1,17 @@
 .slider-decorator-1,
 .slider-decorator-0,
 .slider-decorator-2 {
-  display: none;
+	display: none;
 }
 h4,
 h5 {
-  font-family: "Roboto", sans-serif;
+	font-family: 'Roboto', sans-serif;
 }
 h5 {
-  font-weight: 300;
+	font-weight: 300;
 }
 .source {
-  font-weight: 300;
-  font-size: 0.9em;
+	font-weight: 300;
+	font-size: 0.9em;
+	margin-left: 10px;
 }
