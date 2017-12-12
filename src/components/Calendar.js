@@ -28,7 +28,7 @@ class Calendar extends Component {
 					</colgroup>
 					<tbody>
 						{calData.map((event, idx) => (
-							<tr>
+							<tr key={idx}>
 								<td className="calDate">
 									<i className="fa fa-calendar-o" aria-hidden="true" />
 									{moment(event.start.date).format('M/D')}

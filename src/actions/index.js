@@ -104,18 +104,16 @@ export const fetchCryptos = () => {
 				'https://min-api.cryptocompare.com/data/pricemultifull?fsyms=BTC,ETH,LTC&tsyms=USD'
 			)
 			.then(res => {
-				const cryptos = {
-					btcPrice: res.data.RAW.BTC.USD.PRICE,
-					btcHigh: res.data.RAW.BTC.USD.HIGH24HOUR,
-					btcLow: res.data.RAW.BTC.USD.LOW24HOUR,
-					ethPrice: res.data.RAW.ETH.USD.PRICE,
-					ethHigh: res.data.RAW.ETH.USD.HIGH24HOUR,
-					ethLow: res.data.RAW.ETH.USD.LOW24HOUR,
-					ltcPrice: res.data.RAW.LTC.USD.PRICE,
-					ltcHigh: res.data.RAW.LTC.USD.HIGH24HOUR,
-					ltcLow: res.data.RAW.LTC.USD.LOW24HOUR
-				};
-				dispatch({ type: FETCH_CRYPTOS, payload: cryptos });
+				const formatJSON = _.map(res.data.RAW, CC => {
+					return _.pick(CC.USD, [
+						'FROMSYMBOL',
+						'PRICE',
+						'HIGH24HOUR',
+						'LOW24HOUR'
+					]);
+				});
+
+				dispatch({ type: FETCH_CRYPTOS, payload: formatJSON });
 			});
 	};
 };
