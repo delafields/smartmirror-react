@@ -3,11 +3,7 @@ import {
 	FETCH_FORECAST,
 	FETCH_CALENDAR,
 	FETCH_CRYPTOS,
-	FETCH_BBC_NEWS,
-	FETCH_BLOOM_NEWS,
-	FETCH_ECON_NEWS,
-	FETCH_SCIENTIST_NEWS,
-	FETCH_HACKER_NEWS
+	FETCH_NEWS
 } from './types';
 import {
 	WEATHER_KEY,
@@ -84,8 +80,6 @@ export const fetchCalendar = () => {
 				}
 			)
 			.then(res => {
-				let eventName = Moment(res.data.items[0].start.date).format('M/D');
-
 				const calendarEvents = _.map(
 					res.data.items,
 					_.partialRight(_.pick, ['summary', 'start.date'])
@@ -119,78 +113,51 @@ export const fetchCryptos = () => {
 };
 
 // get news articles
-export const fetchBBCNews = () => {
+export const fetchNews = () => {
 	return dispatch => {
-		axios
-			.get(
-				`https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${NEWS_KEY}`
-			)
-			.then(res => {
-				const sliceRes = res.data.articles.slice(0, 3);
-				const formatJSON = _.map(sliceRes, article => {
-					return _.pick(article, ['author', 'title', 'description']);
-				});
-				dispatch({ type: FETCH_BBC_NEWS, payload: formatJSON });
+		let news = [];
+		const newsAPI = `https://newsapi.org/v1/articles?source=`;
+		const queryParams = `&sortBy=top&apiKey=${NEWS_KEY}`;
+		axios.get(`${newsAPI}bbc-news${queryParams}`).then(res => {
+			const sliceRes = res.data.articles.slice(0, 3);
+			const formatJSON = _.map(sliceRes, article => {
+				return _.pick(article, ['author', 'title', 'description']);
 			});
-	};
-};
-export const fetchBloomNews = () => {
-	return dispatch => {
-		axios
-			.get(
-				`https://newsapi.org/v1/articles?source=bloomberg&sortBy=top&apiKey=${NEWS_KEY}`
-			)
-			.then(res => {
-				const sliceRes = res.data.articles.slice(0, 3);
-				const formatJSON = _.map(sliceRes, article => {
-					return _.pick(article, ['author', 'title', 'description']);
-				});
-				dispatch({ type: FETCH_BLOOM_NEWS, payload: formatJSON });
+			news.push(formatJSON);
+		});
+		axios.get(`${newsAPI}bloomberg${queryParams}`).then(res => {
+			const sliceRes = res.data.articles.slice(0, 3);
+			const formatJSON = _.map(sliceRes, article => {
+				return _.pick(article, ['author', 'title', 'description']);
 			});
-	};
-};
-export const fetchEconNews = () => {
-	return dispatch => {
-		axios
-			.get(
-				`https://newsapi.org/v1/articles?source=the-economist&sortBy=top&apiKey=${NEWS_KEY}`
-			)
-			.then(res => {
-				const sliceRes = res.data.articles.slice(0, 3);
-				const formatJSON = _.map(sliceRes, article => {
-					return _.pick(article, ['author', 'title', 'description']);
-				});
-				dispatch({ type: FETCH_ECON_NEWS, payload: formatJSON });
+			news.push(formatJSON);
+		});
+
+		axios.get(`${newsAPI}the-economist${queryParams}`).then(res => {
+			const sliceRes = res.data.articles.slice(0, 3);
+			const formatJSON = _.map(sliceRes, article => {
+				return _.pick(article, ['author', 'title', 'description']);
 			});
-	};
-};
-export const fetchHackerNews = () => {
-	return dispatch => {
-		axios
-			.get(
-				`https://newsapi.org/v1/articles?source=hacker-news&sortBy=top&apiKey=${NEWS_KEY}`
-			)
-			.then(res => {
-				const sliceRes = res.data.articles.slice(0, 3);
-				const formatJSON = _.map(sliceRes, article => {
-					return _.pick(article, ['author', 'title', 'description']);
-				});
-				dispatch({ type: FETCH_HACKER_NEWS, payload: formatJSON });
+			news.push(formatJSON);
+		});
+
+		axios.get(`${newsAPI}hacker-news${queryParams}`).then(res => {
+			const sliceRes = res.data.articles.slice(0, 3);
+			const formatJSON = _.map(sliceRes, article => {
+				return _.pick(article, ['author', 'title', 'description']);
 			});
-	};
-};
-export const fetchScientistNews = () => {
-	return dispatch => {
-		axios
-			.get(
-				`https://newsapi.org/v1/articles?source=bbc-news&sortBy=top&apiKey=${NEWS_KEY}`
-			)
-			.then(res => {
-				const sliceRes = res.data.articles.slice(0, 3);
-				const formatJSON = _.map(sliceRes, article => {
-					return _.pick(article, ['author', 'title', 'description']);
-				});
-				dispatch({ type: FETCH_SCIENTIST_NEWS, payload: formatJSON });
+			news.push(formatJSON);
+		});
+
+		axios.get(`${newsAPI}new-scientist${queryParams}`).then(res => {
+			const sliceRes = res.data.articles.slice(0, 3);
+			const formatJSON = _.map(sliceRes, article => {
+				return _.pick(article, ['author', 'title', 'description']);
 			});
+			news.push(formatJSON);
+			let concatNews = [].concat.apply([], news);
+
+			dispatch({ type: FETCH_NEWS, payload: concatNews });
+		});
 	};
 };

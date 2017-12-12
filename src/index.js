@@ -9,13 +9,13 @@ import logger from 'redux-logger';
 import App from './App';
 import reducers from './reducers';
 
-let middleware = [thunk, logger];
+let middleware = [thunk];
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>,
-  document.getElementById('root')
+	<Provider store={createStoreWithMiddleware(reducers)}>
+		<App />
+	</Provider>,
+	document.getElementById('root')
 );
 registerServiceWorker();
