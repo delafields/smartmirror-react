@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchNews } from '../actions';
+import { fetchNews } from './fetchNews';
 
 import Carousel from 'nuka-carousel';
-import '../styles/news.css';
+import './news.css';
 
 class News extends Component {
 	componentDidMount() {

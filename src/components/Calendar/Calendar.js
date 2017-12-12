@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchCalendar } from '../actions';
+import { fetchCalendar } from './fetchCalendar';
 import moment from 'moment';
 
-import '../styles/calendar.css';
+import './calendar.css';
 
 class Calendar extends Component {
 	componentDidMount() {

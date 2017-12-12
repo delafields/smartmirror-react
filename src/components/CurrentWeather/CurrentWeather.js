@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchWeather } from '../actions';
+import { fetchWeather } from './fetchWeather';
 
-import '../styles/current_weather.css';
+import './current_weather.css';
 
 class CurrentWeather extends Component {
 	componentWillMount() {

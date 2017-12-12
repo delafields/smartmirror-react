@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchCryptos } from '../actions';
+import { fetchCryptos } from './fetchCryptos';
 
-import '../styles/cc_ticker.css';
+import './cc_ticker.css';
 
 class CCTicker extends Component {
 	componentDidMount() {

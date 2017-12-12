@@ -6,14 +6,14 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import logger from 'redux-logger';
 
-import App from './App';
-import reducers from './reducers';
+import App from './components/App';
+import rootReducer from './rootReducer';
 
-let middleware = [thunk];
+let middleware = [thunk, logger];
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
 ReactDOM.render(
-	<Provider store={createStoreWithMiddleware(reducers)}>
+	<Provider store={createStoreWithMiddleware(rootReducer)}>
 		<App />
 	</Provider>,
 	document.getElementById('root')

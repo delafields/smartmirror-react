@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import './styles/App.css';
+import './App.css';
 
-import Clock from './components/Clock';
-import CurrentWeather from './components/CurrentWeather';
-import Forecast from './components/Forecast';
-import Calendar from './components/Calendar';
-import News from './components/News';
-import CCTicker from './components/CCTicker';
+import Clock from './Clock/Clock';
+import CurrentWeather from './CurrentWeather/CurrentWeather';
+import Forecast from './WeatherForecast/WeatherForecast';
+import Calendar from './Calendar/Calendar';
+import News from './News/News';
+import CCTicker from './CCTicker/CCTicker';
 
 class App extends Component {
 	render() {
@@ -24,7 +24,7 @@ class App extends Component {
 
 					<div className="region top right">
 						<CurrentWeather />
-						<Forecast />
+						{/*<Forecast />*/}
 					</div>
 				</div>
 

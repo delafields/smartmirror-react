@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Moment from 'moment';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { fetchForecast } from '../actions';
+import { fetchForecast } from './fetchForecast';
 
-import '../styles/forecast.css';
+import './weather_forecast.css';
 
 class Forecast extends Component {
-	componentWillMount() {
+	componentDidMount() {
 		this.props.fetchForecast();
 		this.interval = setInterval(this.fetchForecast, 10 * 6000 * 60 * 6); // 6 hrs
 	}
