@@ -7,11 +7,14 @@ export const fetchForecast = () => {
 	return dispatch => {
 		axios
 			.get(
-				`http://api.openweathermap.org/data/2.5/forecast/daily?appid=${WEATHER_KEY}&q=21014,us&cnt=5`
+				`http://api.openweathermap.org/data/2.5/forecast?zip=21014,us&appid=${WEATHER_KEY}`
 			)
 			.then(res => {
+				const celsToFar = temp => {
+					return Math.round(temp * (9 / 5) - 459.67);
+				};
 				console.log(res);
-				const forecast = {
+				/*const forecast = {
 					temp1: Math.round(res.data.list[0].temp.day * (9 / 5) - 459.67),
 					desc1: res.data.list[0].weather[0].description,
 					temp2: Math.round(res.data.list[1].temp.day * (9 / 5) - 459.67),
@@ -24,6 +27,7 @@ export const fetchForecast = () => {
 					desc5: res.data.list[4].weather[0].description
 				};
 				dispatch({ type: FETCH_FORECAST, payload: forecast });
+				*/
 			});
 	};
 };

@@ -1,4 +1,4 @@
-import { FETCH_CRYPTOS } from '../../actions/types';
+import { FETCH_CRYPTOS } from '../../config/constants';
 
 export default function(state = [], action) {
 	switch (action.type) {

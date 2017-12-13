@@ -6,7 +6,7 @@ import { fetchWeather } from './fetchWeather';
 import './current_weather.css';
 
 class CurrentWeather extends Component {
-	componentWillMount() {
+	componentDidMount() {
 		this.props.fetchWeather();
 		this.interval = setInterval(this.fetchWeather, 10 * 6000 * 60 * 1); // 1 hr
 	}
@@ -17,102 +17,102 @@ class CurrentWeather extends Component {
 
 	render() {
 		let windDirection = null;
-		let stateWind = this.props.currentWeather.windDirection;
-		if (stateWind === '') {
+		let windDegree = this.props.currentWeather.windDirection;
+		if (windDegree === '') {
 			windDirection = <span>Loading...</span>;
-		} else if (stateWind === 0 || stateWind === 360) {
+		} else if (windDegree === 0 || windDegree === 360) {
 			windDirection = <i className="wi wi-wind from-0-deg" />;
-		} else if (stateWind > 0 && stateWind < 90) {
+		} else if (windDegree > 0 && windDegree < 90) {
 			windDirection = <i className="wi wi-wind from-45-deg" />;
-		} else if (stateWind === 90) {
+		} else if (windDegree === 90) {
 			windDirection = <i className="wi wi-wind from-90-deg" />;
-		} else if (stateWind > 90 && stateWind < 180) {
+		} else if (windDegree > 90 && windDegree < 180) {
 			windDirection = <i className="wi wi-wind from-135-deg" />;
-		} else if (stateWind === 180) {
+		} else if (windDegree === 180) {
 			windDirection = <i className="wi wi-wind from-180-deg" />;
-		} else if (stateWind > 180 && stateWind < 270) {
+		} else if (windDegree > 180 && windDegree < 270) {
 			windDirection = <i className="wi wi-wind from-225-deg" />;
-		} else if (stateWind === 270) {
+		} else if (windDegree === 270) {
 			windDirection = <i className="wi wi-wind from-270-deg" />;
-		} else if (stateWind > 270 && stateWind < 360) {
+		} else if (windDegree > 270 && windDegree < 360) {
 			windDirection = <i className="wi wi-wind from-293-deg" />;
-		} else if (stateWind < 0 || stateWind > 360) {
+		} else if (windDegree < 0 || windDegree > 360) {
 			windDirection = <span>Error</span>;
 		} else {
 			windDirection = <span>Error</span>;
 		}
 
 		let weatherIcon = null;
-		let stateWeatherIcon = this.props.currentWeather.weatherIcon;
-		if (stateWeatherIcon === '') {
+		let resultIcon = this.props.currentWeather.weatherIcon;
+		if (resultIcon === '') {
 			weatherIcon = <span>Loading...</span>;
-		} else if (stateWeatherIcon === '01d') {
+		} else if (resultIcon === '01d') {
 			weatherIcon = <i className="wi wi-day-sunny" />;
-		} else if (stateWeatherIcon === '01n') {
+		} else if (resultIcon === '01n') {
 			weatherIcon = <i className="wi wi-night-clear" />;
-		} else if (stateWeatherIcon === '02d') {
+		} else if (resultIcon === '02d') {
 			weatherIcon = <i className="wi wi-day-cloudy" />;
-		} else if (stateWeatherIcon === '02n') {
+		} else if (resultIcon === '02n') {
 			weatherIcon = <i className="wi wi-night-alt-cloudy" />;
-		} else if (stateWeatherIcon === '03d') {
+		} else if (resultIcon === '03d') {
 			weatherIcon = <i className="wi wi-cloudy" />;
-		} else if (stateWeatherIcon === '03n') {
+		} else if (resultIcon === '03n') {
 			weatherIcon = <i className="wi wi-cloudy" />;
-		} else if (stateWeatherIcon === '04d') {
+		} else if (resultIcon === '04d') {
 			weatherIcon = <i className="wi wi-day-cloudy-gusts" />;
-		} else if (stateWeatherIcon === '04n') {
+		} else if (resultIcon === '04n') {
 			weatherIcon = <i className="wi wi-night-alt-cloudy-gusts" />;
-		} else if (stateWeatherIcon === '09d') {
+		} else if (resultIcon === '09d') {
 			weatherIcon = <i className="wi wi-day-storm-showers" />;
-		} else if (stateWeatherIcon === '09n') {
+		} else if (resultIcon === '09n') {
 			weatherIcon = <i className="wi wi-night-alt-showers" />;
-		} else if (stateWeatherIcon === '10d') {
+		} else if (resultIcon === '10d') {
 			weatherIcon = <i className="wi wi-day-sprinkle" />;
-		} else if (stateWeatherIcon === '10n') {
+		} else if (resultIcon === '10n') {
 			weatherIcon = <i className="wi wi-night-alt-rain-wind" />;
-		} else if (stateWeatherIcon === '11d') {
+		} else if (resultIcon === '11d') {
 			weatherIcon = <i className="wi wi-day-thunderstorm" />;
-		} else if (stateWeatherIcon === '11n') {
+		} else if (resultIcon === '11n') {
 			weatherIcon = <i className="wi wi-night-alt-thunderstorm" />;
-		} else if (stateWeatherIcon === '13d') {
+		} else if (resultIcon === '13d') {
 			weatherIcon = <i className="wi-day-snow-wind" />;
-		} else if (stateWeatherIcon === '13n') {
+		} else if (resultIcon === '13n') {
 			weatherIcon = <i className="wi wi-night-alt-snow" />;
-		} else if (stateWeatherIcon === '50d') {
+		} else if (resultIcon === '50d') {
 			weatherIcon = <i className="wi wi-dust" />;
 		} else {
 			weatherIcon = <span>Error</span>;
 		}
 
 		let windSpeedIcon = null;
-		let stateWindSpeed = this.props.currentWeather.windSpeed;
-		if (stateWindSpeed === '') {
+		let resultWindSpeed = this.props.currentWeather.windSpeed;
+		if (resultWindSpeed === '') {
 			windSpeedIcon = <span>Loading...</span>;
-		} else if (stateWindSpeed > 0 && stateWindSpeed <= 1) {
+		} else if (resultWindSpeed > 0 && resultWindSpeed <= 1) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-0" />;
-		} else if (stateWindSpeed > 1 && stateWindSpeed <= 3) {
+		} else if (resultWindSpeed > 1 && resultWindSpeed <= 3) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-1" />;
-		} else if (stateWindSpeed > 3 && stateWindSpeed <= 7) {
+		} else if (resultWindSpeed > 3 && resultWindSpeed <= 7) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-2" />;
-		} else if (stateWindSpeed > 7 && stateWindSpeed <= 12) {
+		} else if (resultWindSpeed > 7 && resultWindSpeed <= 12) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-3" />;
-		} else if (stateWindSpeed > 12 && stateWindSpeed <= 18) {
+		} else if (resultWindSpeed > 12 && resultWindSpeed <= 18) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-4" />;
-		} else if (stateWindSpeed > 18 && stateWindSpeed <= 24) {
+		} else if (resultWindSpeed > 18 && resultWindSpeed <= 24) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-5" />;
-		} else if (stateWindSpeed > 24 && stateWindSpeed <= 31) {
+		} else if (resultWindSpeed > 24 && resultWindSpeed <= 31) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-6" />;
-		} else if (stateWindSpeed > 31 && stateWindSpeed <= 38) {
+		} else if (resultWindSpeed > 31 && resultWindSpeed <= 38) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-7" />;
-		} else if (stateWindSpeed > 38 && stateWindSpeed <= 46) {
+		} else if (resultWindSpeed > 38 && resultWindSpeed <= 46) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-8" />;
-		} else if (stateWindSpeed > 46 && stateWindSpeed <= 54) {
+		} else if (resultWindSpeed > 46 && resultWindSpeed <= 54) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-9" />;
-		} else if (stateWindSpeed > 54 && stateWindSpeed <= 63) {
+		} else if (resultWindSpeed > 54 && resultWindSpeed <= 63) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-10" />;
-		} else if (stateWindSpeed > 63 && stateWindSpeed <= 72) {
+		} else if (resultWindSpeed > 63 && resultWindSpeed <= 72) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-11" />;
-		} else if (stateWindSpeed > 73) {
+		} else if (resultWindSpeed > 73) {
 			windSpeedIcon = <i className="wi wi-wind-beaufort-12" />;
 		} else {
 			windSpeedIcon = <span>Error</span>;

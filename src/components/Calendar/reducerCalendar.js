@@ -1,4 +1,4 @@
-import { FETCH_CALENDAR } from '../../actions/types';
+import { FETCH_CALENDAR } from '../../config/constants';
 
 export default function(state = [], action) {
 	switch (action.type) {

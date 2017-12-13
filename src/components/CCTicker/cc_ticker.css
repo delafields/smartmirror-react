@@ -28,7 +28,8 @@
 	width: 100%;
 	overflow: hidden;
 	height: 4rem;
-	padding-left: 50%; /* offset items to begin */
+	padding-right: 100%; /* offset items to begin */
+	padding-left: 75%;
 }
 
 .ticker {

@@ -7,16 +7,19 @@ export const fetchWeather = () => {
 	return dispatch => {
 		axios
 			.get(
-				`http://api.openweathermap.org/data/2.5/weather?appid=${WEATHER_KEY}&q=21014,us`
+				`http://api.openweathermap.org/data/2.5/weather?zip=21014,us&appid=${WEATHER_KEY}`
 			)
 			.then(res => {
-				console.log(res.data);
+				const data = res.data;
+				const celsToFar = temp => {
+					return Math.round(temp * (9 / 5) - 459.67);
+				};
 				const weather = {
-					weatherIcon: res.data.weather[0].icon,
-					temperature: Math.round(res.data.main.temp * (9 / 5) - 459.67),
-					humidity: res.data.main.humidity,
-					windSpeed: res.data.wind.speed,
-					windDirection: res.data.wind.deg
+					weatherIcon: data.weather[0].icon,
+					temperature: celsToFar(data.main.temp),
+					humidity: data.main.humidity,
+					windSpeed: data.wind.speed,
+					windDirection: data.wind.deg
 				};
 				dispatch({ type: FETCH_WEATHER, payload: weather });
 			});

@@ -9,7 +9,7 @@ import logger from 'redux-logger';
 import App from './components/App';
 import rootReducer from './rootReducer';
 
-let middleware = [thunk, logger];
+let middleware = [thunk];
 const createStoreWithMiddleware = applyMiddleware(...middleware)(createStore);
 
 ReactDOM.render(
