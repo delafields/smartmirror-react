@@ -6,7 +6,9 @@ import CurrentWeather from './CurrentWeather/CurrentWeather';
 import Forecast from './WeatherForecast/WeatherForecast';
 import Calendar from './Calendar/Calendar';
 import News from './News/News';
-import CCTicker from './CCTicker/CCTicker';
+import Colors from './Colors/Colors'
+//import CCTicker from './CCTicker/CCTicker';
+//import Quotes from './Quotes/Quotes';
 
 class App extends Component {
 	render() {
@@ -20,7 +22,9 @@ class App extends Component {
 						<Calendar />
 					</div>
 
-					<div className="region top center" />
+					<div className="region top center" >
+
+					</div>
 
 					<div className="region top right">
 						<CurrentWeather />
@@ -45,7 +49,7 @@ class App extends Component {
 				</div>
 
 				<div className="region fullscreen above" >
-					<h6>hello</h6>
+					<Colors/>
 				</div>
 			</div>
 		);
