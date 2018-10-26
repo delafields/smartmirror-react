@@ -96,5 +96,5 @@ body {
 }
 
 .region.lower.third {
-	top: 75%; /* default 66% */
+	top: 100%; /* default 66% */
 }

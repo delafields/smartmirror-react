@@ -24,7 +24,7 @@ class App extends Component {
 
 					<div className="region top right">
 						<CurrentWeather />
-						{/*<Forecast />*/}
+						<Forecast />
 					</div>
 				</div>
 
@@ -39,12 +39,14 @@ class App extends Component {
 				<div className="region bottom bar">
 					<div className="region bottom left" />
 					<div className="region bottom center">
-						<CCTicker />
+						{/*<CCTicker />*/}
 					</div>
 					<div className="region bottom right" />
 				</div>
 
-				<div className="region fullscreen above" />
+				<div className="region fullscreen above" >
+					<h6>hello</h6>
+				</div>
 			</div>
 		);
 	}
